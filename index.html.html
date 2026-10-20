@@ -1,0 +1,296 @@
+<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#fff;color:#000}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
+<title>Dr Noman's Dental Clinic</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=Figtree:wght@400;500;600&display=swap">
+<style>
+/* Layout: split hero (headline + labelled tooth cross-section), services as a ruled list, dark contact band */
+:root {
+  --bg: #f2f8f7;
+  --surface: #ffffff;
+  --fg: #0d2a2c;
+  --muted: #4d6a6c;
+  --line: #cfe0de;
+  --teal: #0b6e6e;
+  --accent: #e4583f;
+  --accent-fg: #ffffff;
+  --band: #0d2a2c;
+  --band-fg: #eaf5f3;
+  --enamel: #ffffff;
+  --dentin: #f1dfb8;
+  --pulp: #e4583f;
+  --font-display: "Bricolage Grotesque", "Segoe UI", system-ui, sans-serif;
+  --font-body: "Figtree", "Segoe UI", system-ui, sans-serif;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #0a1d1f; --surface: #112a2d; --fg: #e8f4f2; --muted: #98b6b4; --line: #25444a;
+    --teal: #4cc3bd; --accent: #ff7b62; --accent-fg: #1a0a06; --band: #05100f; --band-fg: #eaf5f3;
+    --enamel: #f4fbfa; --dentin: #d9c28d; --pulp: #ff7b62;
+    color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #0a1d1f; --surface: #112a2d; --fg: #e8f4f2; --muted: #98b6b4; --line: #25444a;
+  --teal: #4cc3bd; --accent: #ff7b62; --accent-fg: #1a0a06; --band: #05100f; --band-fg: #eaf5f3;
+  --enamel: #f4fbfa; --dentin: #d9c28d; --pulp: #ff7b62;
+  color-scheme: dark;
+}
+
+* { box-sizing: border-box; }
+body {
+  background: var(--bg); color: var(--fg);
+  font-family: var(--font-body); font-size: 17px; line-height: 1.6;
+}
+h1, h2, h3 { font-family: var(--font-display); text-wrap: balance; line-height: 1.08; margin: 0; }
+p { margin: 0; }
+a { color: inherit; }
+:focus-visible { outline: 3px solid var(--accent); outline-offset: 3px; }
+
+.wrap {
+  max-width: 1080px; margin-inline: auto;
+  padding-left: max(16px, env(safe-area-inset-left, 0px));
+  padding-right: max(16px, env(safe-area-inset-right, 0px));
+}
+
+/* header */
+header .wrap { display: flex; align-items: center; justify-content: space-between; gap: 16px; padding-block: 20px; flex-wrap: wrap; }
+.brand { font-family: var(--font-display); font-weight: 800; font-size: 1.15rem; letter-spacing: -0.01em; display: flex; align-items: center; gap: 10px; text-decoration: none; }
+.brand svg { width: 26px; height: 26px; flex: none; }
+nav { display: flex; gap: 22px; font-weight: 500; font-size: 0.95rem; }
+nav a { text-decoration: none; color: var(--muted); }
+nav a:hover { color: var(--fg); }
+
+/* hero */
+.hero .wrap { display: grid; grid-template-columns: 1.1fr 0.9fr; gap: 48px; align-items: center; padding-block: 40px 72px; }
+.eyebrow { font-size: 0.8rem; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; color: var(--teal); }
+h1 { font-size: clamp(2.5rem, 6.4vw, 4.6rem); font-weight: 800; letter-spacing: -0.03em; margin-top: 14px; }
+.lead { margin-top: 22px; max-width: 46ch; color: var(--muted); font-size: 1.1rem; }
+.actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 30px; }
+.btn {
+  display: inline-flex; align-items: center; justify-content: center; gap: 8px;
+  padding: 14px 24px; border-radius: 999px; font-weight: 600; font-size: 1rem;
+  text-decoration: none; border: 2px solid transparent; cursor: pointer; font-family: inherit;
+}
+.btn-primary { background: var(--accent); color: var(--accent-fg); }
+.btn-primary:hover { filter: brightness(1.06); }
+.btn-ghost { border-color: var(--line); color: var(--fg); background: transparent; }
+.btn-ghost:hover { border-color: var(--teal); }
+
+.shades { margin-top: 36px; }
+.shades small { display: block; font-size: 0.78rem; color: var(--muted); margin-bottom: 8px; letter-spacing: 0.04em; }
+.shade-row { display: flex; gap: 8px; flex-wrap: wrap; }
+.shade { width: 46px; text-align: center; font-size: 0.72rem; font-weight: 600; color: var(--muted); }
+.shade i { display: block; height: 34px; border-radius: 8px 8px 14px 14px; border: 1px solid var(--line); margin-bottom: 4px; }
+
+.figure { background: var(--surface); border: 1px solid var(--line); border-radius: 28px; padding: 20px 12px 12px; min-width: 0; }
+.figure svg { width: 100%; height: auto; display: block; }
+.figure figcaption { font-size: 0.8rem; color: var(--muted); text-align: center; padding: 6px 8px 8px; }
+.lbl { font-family: var(--font-body); font-size: 11px; font-weight: 600; fill: var(--fg); }
+.lead-line { stroke: var(--muted); stroke-width: 1; fill: none; }
+
+/* services */
+section { padding-block: 72px; }
+.section-head { display: grid; grid-template-columns: 1fr 1fr; gap: 32px; align-items: end; margin-bottom: 36px; }
+h2 { font-size: clamp(1.9rem, 4.4vw, 3rem); font-weight: 800; letter-spacing: -0.025em; }
+.section-head p { color: var(--muted); max-width: 44ch; }
+.services { list-style: none; margin: 0; padding: 0; border-top: 1px solid var(--line); }
+.services li { display: grid; grid-template-columns: 56px minmax(0, 1fr) minmax(0, 1.4fr); gap: 20px 28px; align-items: start; padding: 28px 0; border-bottom: 1px solid var(--line); }
+.tooth-ico { width: 48px; height: 48px; color: var(--teal); }
+.services h3 { font-size: 1.6rem; font-weight: 700; letter-spacing: -0.015em; }
+.services p { color: var(--muted); }
+
+/* doctor */
+.doctor .wrap { display: grid; grid-template-columns: 0.8fr 1.2fr; gap: 48px; align-items: center; }
+.portrait {
+  aspect-ratio: 4 / 5; max-width: 100%; border-radius: 28px; background: var(--teal);
+  display: grid; place-items: center; color: var(--bg); position: relative; overflow: hidden;
+}
+.portrait span { font-family: var(--font-display); font-weight: 800; font-size: clamp(4rem, 12vw, 7rem); letter-spacing: -0.04em; }
+.portrait em { position: absolute; left: 18px; bottom: 16px; font-style: normal; font-size: 0.8rem; opacity: 0.85; }
+.doctor h2 { margin-bottom: 18px; }
+.doctor p { color: var(--muted); max-width: 52ch; }
+.doctor p + p { margin-top: 14px; }
+
+/* contact */
+.contact { background: var(--band); color: var(--band-fg); }
+.contact .wrap { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; align-items: center; }
+.contact h2 { color: var(--band-fg); }
+.contact .sub { margin-top: 14px; color: color-mix(in srgb, var(--band-fg) 72%, transparent); max-width: 40ch; }
+.numbox { border: 1px solid color-mix(in srgb, var(--band-fg) 22%, transparent); border-radius: 24px; padding: 28px; min-width: 0; }
+.numbox small { font-size: 0.78rem; letter-spacing: 0.14em; text-transform: uppercase; color: color-mix(in srgb, var(--band-fg) 65%, transparent); }
+.number { font-family: var(--font-display); font-weight: 800; font-size: clamp(1.9rem, 6vw, 2.8rem); letter-spacing: -0.02em; margin: 8px 0 22px; user-select: all; font-variant-numeric: tabular-nums; overflow-wrap: anywhere; }
+.numbox .actions { margin-top: 0; }
+.contact .btn-ghost { border-color: color-mix(in srgb, var(--band-fg) 35%, transparent); color: var(--band-fg); }
+.contact .btn-ghost:hover { border-color: var(--band-fg); }
+#copy-status { margin-top: 12px; min-height: 1.4em; font-size: 0.9rem; color: color-mix(in srgb, var(--band-fg) 80%, transparent); }
+
+footer { background: var(--band); color: color-mix(in srgb, var(--band-fg) 60%, transparent); font-size: 0.85rem; }
+footer .wrap { padding-block: 22px 28px; border-top: 1px solid color-mix(in srgb, var(--band-fg) 14%, transparent); display: flex; justify-content: space-between; gap: 12px; flex-wrap: wrap; }
+
+@media (max-width: 820px) {
+  .hero .wrap, .doctor .wrap, .contact .wrap, .section-head { grid-template-columns: 1fr; }
+  .hero .wrap { gap: 36px; padding-block: 24px 56px; }
+  .services li { grid-template-columns: 48px minmax(0, 1fr); }
+  .services li p { grid-column: 2; }
+  section { padding-block: 56px; }
+  .portrait { max-width: 320px; }
+}
+@media (max-width: 520px) {
+  nav { gap: 16px; }
+  .btn { width: 100%; }
+}
+@media (prefers-reduced-motion: no-preference) {
+  .btn { transition: filter .15s, border-color .15s; }
+}
+</style>
+
+<header>
+  <div class="wrap">
+    <a class="brand" href="#top" aria-label="Dr Noman's Dental Clinic">
+      <svg viewBox="0 0 48 48" aria-hidden="true"><path d="M24 8c-3-3-12-3-14 5-1.600 7 3 11 3.500 18 .5 6 2.500 10 5 10 3 0 2.500-9 5.500-9s2.500 9 5.500 9c2.500 0 4.500-4 5-10 .5-7 5.100-11 3.500-18-2-8-11-8-14-5z" fill="var(--teal)"/></svg>
+      Dr Noman
+    </a>
+    <nav aria-label="Main">
+      <a href="#services">Services</a>
+      <a href="#doctor">Doctor</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </div>
+</header>
+
+<main id="top">
+  <div class="hero">
+    <div class="wrap">
+      <div>
+        <p class="eyebrow">Dental clinic</p>
+        <h1>Care for your teeth, from a checkup to a root canal.</h1>
+        <p class="lead">Dr Noman treats cavities, cleans teeth, replaces missing teeth and saves infected ones. Call the clinic to book a visit.</p>
+        <div class="actions">
+          <a class="btn btn-primary" href="#contact">Book an appointment</a>
+          <a class="btn btn-ghost" href="#services">See services</a>
+        </div>
+        <div class="shades">
+          <small>Artificial teeth are matched to your own shade, from the A–D shade guide.</small>
+          <div class="shade-row" aria-hidden="true">
+            <div class="shade"><i style="background:#f6f1e4"></i>A1</div>
+            <div class="shade"><i style="background:#f1e6cc"></i>A2</div>
+            <div class="shade"><i style="background:#ecdcb9"></i>A3</div>
+            <div class="shade"><i style="background:#f3ebd9"></i>B1</div>
+            <div class="shade"><i style="background:#eadfc2"></i>B2</div>
+            <div class="shade"><i style="background:#e3d6b8"></i>C1</div>
+          </div>
+        </div>
+      </div>
+
+      <figure class="figure" style="margin:0">
+        <svg viewBox="0 0 320 380" role="img" aria-label="Cross-section of a tooth showing enamel, dentin, pulp and root canal">
+          <path d="M70 70 C70 28 118 22 160 44 C202 22 250 28 250 70 C250 120 228 150 224 200 C220 258 214 330 192 330 C172 330 172 250 160 218 C148 250 148 330 128 330 C106 330 100 258 96 200 C92 150 70 120 70 70Z" fill="var(--dentin)" stroke="var(--fg)" stroke-width="1.5"/>
+          <path d="M70 70 C70 28 118 22 160 44 C202 22 250 28 250 70 C250 92 244 108 236 122 C224 96 200 80 160 80 C120 80 96 96 84 122 C76 108 70 92 70 70Z" fill="var(--enamel)" stroke="var(--fg)" stroke-width="1.5"/>
+          <path d="M124 104 C140 92 180 92 196 104 C198 140 184 160 182 200 L178 300 L170 300 L160 214 L150 300 L142 300 L138 200 C136 160 122 140 124 104Z" fill="var(--pulp)" opacity="0.9"/>
+          <path d="M60 62 H12" class="lead-line"/><text class="lbl" x="12" y="54">Enamel</text>
+          <path d="M92 160 H12" class="lead-line"/><text class="lbl" x="12" y="152">Dentin</text>
+          <path d="M160 128 L282 128" class="lead-line"/><text class="lbl" x="226" y="120">Pulp</text>
+          <path d="M178 270 L282 270" class="lead-line"/><text class="lbl" x="206" y="262">Root canal</text>
+          <path d="M20 346 H300" stroke="var(--line)" stroke-width="2" fill="none"/>
+          <text class="lbl" x="160" y="368" text-anchor="middle" style="font-weight:500;fill:var(--muted)">Gum line</text>
+        </svg>
+        <figcaption>A root canal cleans the pulp inside the tooth, so the tooth can stay.</figcaption>
+      </figure>
+    </div>
+  </div>
+
+  <section id="services">
+    <div class="wrap">
+      <div class="section-head">
+        <h2>What we treat</h2>
+        <p>Four common treatments, done at the clinic by Dr Noman.</p>
+      </div>
+      <ul class="services">
+        <li>
+          <svg class="tooth-ico" viewBox="0 0 48 48" aria-hidden="true"><path d="M24 9c-3-3-12-3-14 5-1.500 6.500 2.500 11 3 18 .5 6 2.500 9 5 9 3 0 2.500-8 6-8s3 8 6 8c2.500 0 4.500-3 5-9 .5-7 4.500-11.500 3-18-2-8-11-8-14-5z" fill="none" stroke="currentColor" stroke-width="2.500"/><circle cx="17" cy="19" r="3" fill="currentColor"/></svg>
+          <h3>Filling</h3>
+          <p>A cavity is cleaned out and the tooth is filled, so decay stops and you can chew normally again.</p>
+        </li>
+        <li>
+          <svg class="tooth-ico" viewBox="0 0 48 48" aria-hidden="true"><path d="M24 9c-3-3-12-3-14 5-1.500 6.500 2.500 11 3 18 .5 6 2.500 9 5 9 3 0 2.500-8 6-8s3 8 6 8c2.500 0 4.500-3 5-9 .5-7 4.500-11.500 3-18-2-8-11-8-14-5z" fill="none" stroke="currentColor" stroke-width="2.500"/><path d="M33 8l1.500 3.500L38 13l-3.500 1.500L33 18l-1.500-3.500L28 13l3.500-1.500z" fill="currentColor"/></svg>
+          <h3>Cleaning</h3>
+          <p>Plaque and tartar are removed from your teeth and along the gum line, which helps prevent gum disease and bad breath.</p>
+        </li>
+        <li>
+          <svg class="tooth-ico" viewBox="0 0 48 48" aria-hidden="true"><path d="M24 9c-3-3-12-3-14 5-1.500 6.500 2.500 11 3 18 .5 6 2.500 9 5 9 3 0 2.500-8 6-8s3 8 6 8c2.500 0 4.500-3 5-9 .5-7 4.500-11.500 3-18-2-8-11-8-14-5z" fill="none" stroke="currentColor" stroke-width="2.500" stroke-dasharray="4 4"/></svg>
+          <h3>Artificial teeth</h3>
+          <p>Missing teeth are replaced with artificial ones shaped and shaded to match the teeth around them.</p>
+        </li>
+        <li>
+          <svg class="tooth-ico" viewBox="0 0 48 48" aria-hidden="true"><path d="M24 9c-3-3-12-3-14 5-1.500 6.500 2.500 11 3 18 .5 6 2.500 9 5 9 3 0 2.500-8 6-8s3 8 6 8c2.500 0 4.500-3 5-9 .5-7 4.500-11.500 3-18-2-8-11-8-14-5z" fill="none" stroke="currentColor" stroke-width="2.500"/><path d="M20 20c2-2 6-2 8 0-.5 5-1 8-1.500 12h-1.500l-.5-6-.5 6h-1.500c-.5-4-1-7-2-12z" fill="currentColor"/></svg>
+          <h3>Root canal</h3>
+          <p>When infection reaches the inside of a tooth, the pulp is cleaned out and sealed. This relieves the pain and saves the tooth from being pulled.</p>
+        </li>
+      </ul>
+    </div>
+  </section>
+
+  <section id="doctor" class="doctor" style="padding-top:0">
+    <div class="wrap">
+      <div class="portrait" role="img" aria-label="Placeholder for Dr Noman's photo">
+        <span>Dr N</span>
+        <em>Photo of Dr Noman goes here</em>
+      </div>
+      <div>
+        <p class="eyebrow">Your dentist</p>
+        <h2 style="margin-top:12px">Dr Noman</h2>
+        <p style="margin-top:18px">Dr Noman sees every patient personally, from a simple cleaning to a root canal. He explains the problem and the treatment before starting, so you know what to expect.</p>
+        <p>To see Dr Noman, call the clinic and ask for an appointment.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="contact" class="contact">
+    <div class="wrap">
+      <div>
+        <p class="eyebrow" style="color:var(--teal)">Contact</p>
+        <h2 style="margin-top:12px">Toothache? Call the clinic.</h2>
+        <p class="sub">Ring or message to book a visit with Dr Noman.</p>
+      </div>
+      <div class="numbox">
+        <small>Phone and WhatsApp</small>
+        <div class="number" id="phone">0345 5123548</div>
+        <div class="actions">
+          <a class="btn btn-primary" href="tel:+923455123548">Call now</a>
+          <a class="btn btn-ghost" href="https://wa.me/923455123548" target="_blank" rel="noopener">WhatsApp</a>
+          <button class="btn btn-ghost" id="copy" type="button">Copy number</button>
+        </div>
+        <p id="copy-status" role="status" aria-live="polite"></p>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <span>Dr Noman's Dental Clinic</span>
+    <span>Filling · Cleaning · Artificial teeth · Root canal</span>
+  </div>
+</footer>
+
+<script>
+(function () {
+  var btn = document.getElementById('copy');
+  var status = document.getElementById('copy-status');
+  var phone = document.getElementById('phone');
+  function selectNumber() {
+    var r = document.createRange(); r.selectNodeContents(phone);
+    var s = window.getSelection(); s.removeAllRanges(); s.addRange(r);
+  }
+  btn.addEventListener('click', function () {
+    var text = '03455123548';
+    var done = function () { status.textContent = 'Number copied.'; };
+    var fail = function () { selectNumber(); status.textContent = 'Number selected. Press copy on your device.'; };
+    try {
+      navigator.clipboard.writeText(text).then(done, fail);
+    } catch (e) { fail(); }
+  });
+})();
+</script>
+
+</body></html>
